@@ -18,7 +18,13 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setAuthenticated: (state, action) => {
+      state.status = 'succeeded';
+      state.token = action.payload.token;
+      state.isAuthenticated = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(signin.pending, (state) => {
@@ -59,4 +65,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { setAuthenticated } = authSlice.actions;
 export default authSlice.reducer;

@@ -6,7 +6,7 @@ import styles from './ProfileScreen.module.css';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store/store';
-import { changePassword, updateProfile } from '../../features/Profile/model/thunks';
+import { changePassword, updateProfile } from '../../entities/User/model/thunks';
 
 const ProfileScreen: React.FC = () => {
   const { t } = useTranslation();
@@ -16,13 +16,11 @@ const ProfileScreen: React.FC = () => {
   const profileError = useSelector((state: RootState) => state.profile.error);
 
   const handleEditProfileSubmit = (data: EditProfileFields) => {
-    dispatch(updateProfile({ email: currentUser.email, name: data.userName, about: data.about }));
+    dispatch(updateProfile({ name: data.userName }));
   };
 
   const handleChangePasswordSubmit = (data: ChangePasswordFields) => {
-    dispatch(
-      changePassword({ email: currentUser.email, oldPassword: data.oldPassword, newPassword: data.newPassword })
-    );
+    dispatch(changePassword({ password: data.oldPassword, newPassword: data.newPassword }));
   };
 
   if (profileStatus === 'loading') {
@@ -35,7 +33,7 @@ const ProfileScreen: React.FC = () => {
       <div>
         <EditProfile
           onSubmit={handleEditProfileSubmit}
-          defaultValues={currentUser && { userName: currentUser?.name, about: currentUser?.about }}
+          defaultValues={currentUser && { userName: currentUser?.name }}
         />
       </div>
       <div>

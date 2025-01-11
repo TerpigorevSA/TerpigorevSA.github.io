@@ -1,32 +1,31 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { saveTokenToLocalStorage, removeTokenFromLocalStorage } from '../../../shared/lib/localStorage';
-import { fetch } from '../../../shared/lib/fakeGenerators/fakeFetch';
-import { clearCurrentUser, setCurrentUser } from '../../../entities/User/model/slice';
+// import { fetch } from '../../../shared/lib/fakeGenerators/fakeFetch';
+import { clearCurrentUser } from '../../../entities/User/model/slice';
+import { getProfile } from '../../../entities/User/model/thunks';
+import { API_BASE_URL } from '../../../shared/configs/api';
 
 export const signin = createAsyncThunk(
   'auth/signin',
-  async (credentials: { email: string; password: string } | { token: string }, thunkAPI) => {
+  async (credentials: { email: string; password: string }, thunkAPI) => {
     try {
-      console.log('token' in credentials);
-      console.log('token' in credentials ? credentials.token : credentials);
-      const response = await ('token' in credentials
-        ? fetch(`/api/users/byToken/${credentials.token}`, {
-            method: 'GET',
-            headers: { Authorization: `Bearer ${credentials.token}` },
-          })
-        : fetch('/api/signin', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(credentials),
-          }));
-      console.log(response);
+      const response = await fetch(`${API_BASE_URL}/api/signin`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials),
+      });
+
       if (!response.ok) throw new Error('Invalid credentials');
       const data = await response.json();
 
       saveTokenToLocalStorage(data.token);
-      thunkAPI.dispatch(setCurrentUser(data.user));
 
-      return data;
+      const profile = await thunkAPI.dispatch(getProfile()); //.unwrap();// thunkAPI.dispatch(setCurrentUser(data.user));
+      if (getProfile.rejected.match(profile)) {
+        throw new Error(profile.payload as string);
+      }
+
+      return { token: data.token, profile };
     } catch (error) {
       return thunkAPI.rejectWithValue((error as Error).message);
     }
@@ -35,9 +34,9 @@ export const signin = createAsyncThunk(
 
 export const signup = createAsyncThunk(
   'auth/signup',
-  async (newUser: { password: string; email: string }, thunkAPI) => {
+  async (newUser: { password: string; email: string; commandId: string }, thunkAPI) => {
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch(`${API_BASE_URL}/api/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUser),
@@ -47,9 +46,13 @@ export const signup = createAsyncThunk(
       const data = await response.json();
 
       saveTokenToLocalStorage(data.token);
-      thunkAPI.dispatch(setCurrentUser(data.user));
 
-      return data;
+      const profile = await thunkAPI.dispatch(getProfile()).unwrap(); // thunkAPI.dispatch(setCurrentUser(data.user));
+      if (getProfile.rejected.match(profile)) {
+        throw new Error(profile.payload as string);
+      }
+
+      return { token: data.token, profile };
     } catch (error) {
       return thunkAPI.rejectWithValue((error as Error).message);
     }
@@ -58,10 +61,6 @@ export const signup = createAsyncThunk(
 
 export const signout = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
   try {
-    await fetch('/api/signout', {
-      method: 'POST',
-    });
-
     removeTokenFromLocalStorage();
     thunkAPI.dispatch(clearCurrentUser());
 

@@ -6,7 +6,8 @@ import styles from './AuthScreen.module.css';
 import { useTranslation } from 'react-i18next';
 import { AppDispatch, RootState } from '../../app/store/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { signout, signin, signup } from '../../features/Auth/model/thunks';
+import { signin, signup, signout } from '../../features/Auth/model/thunks';
+import SignOut from './SignOut/SignOut';
 
 export enum AuthAction {
   SignIn = 'signIn',
@@ -28,20 +29,10 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ authAction }) => {
     dispatch(signin({ email: data.email, password: data.password }));
   };
   const handleSignUpSubmit = (data: SignUpFields) => {
-    dispatch(signup({ email: data.email, password: data.password }));
+    dispatch(signup({ email: data.email, password: data.password, commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89' }));
   };
 
-  if (authAction === AuthAction.SignOut) {
-    dispatch(signout());
-
-    if (authStatus === 'loading') {
-      return <div>{'loading'}</div>;
-    }
-    if (authStatus === 'failed') {
-      return <div className={styles.error}>{authError}</div>;
-    }
-    return <div>{t('AuthScreen.signOut')}</div>;
-  }
+  const handleSignOut = () => dispatch(signout());
 
   if (authStatus === 'loading') {
     return <div>{'loading'}</div>;
@@ -49,12 +40,14 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ authAction }) => {
 
   const signIn = <>{authAction === AuthAction.SignIn && <SignIn onSubmit={handleSignInSubmit} />}</>;
   const signUp = <>{authAction === AuthAction.SignUp && <SignUp onSubmit={handleSignUpSubmit} />}</>;
+  const signOut = <>{authAction === AuthAction.SignOut && <SignOut onSignOut={handleSignOut} />}</>;
 
   return (
     <div className={cn(styles.page)}>
       <div>
         {signIn}
         {signUp}
+        {signOut}
       </div>
       {authError && <div className={styles.error}>{authError}</div>}
     </div>
