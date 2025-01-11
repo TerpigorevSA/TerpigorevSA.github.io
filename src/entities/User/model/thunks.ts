@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getTokenFromLocalStorage } from '../../../shared/lib/localStorage';
 import { setCurrentUser, updateCurrentUser } from './slice';
 import { API_BASE_URL } from '../../../shared/configs/api';
+import { ServerErrors } from '../../../shared/types/serverTypes';
 
 export const getProfile = createAsyncThunk('user/getProfile', async (_, thunkAPI) => {
   const token = getTokenFromLocalStorage();
@@ -14,7 +15,10 @@ export const getProfile = createAsyncThunk('user/getProfile', async (_, thunkAPI
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (!response.ok) throw new Error(`${response.status} - ${await response.json()}`);
+    if (!response.ok) {
+      const errors = await response.json();
+      throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+    }
     const data = await response.json();
 
     thunkAPI.dispatch(setCurrentUser(data));
@@ -36,7 +40,10 @@ export const updateProfile = createAsyncThunk('user/updateProfile', async (user:
       body: JSON.stringify(user),
     });
 
-    if (!response.ok) throw new Error('Update profile failed');
+    if (!response.ok) {
+      const errors = await response.json();
+      throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+    }
     const data = await response.json();
 
     thunkAPI.dispatch(updateCurrentUser(data));
@@ -60,7 +67,10 @@ export const changePassword = createAsyncThunk(
         body: JSON.stringify(user),
       });
 
-      if (!response.ok) throw new Error('Change password failed');
+      if (!response.ok) {
+        const errors = await response.json();
+        throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+      }
       const data = await response.json();
 
       return data;

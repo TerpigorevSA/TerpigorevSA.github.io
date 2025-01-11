@@ -4,6 +4,7 @@ import { saveTokenToLocalStorage, removeTokenFromLocalStorage } from '../../../s
 import { clearCurrentUser } from '../../../entities/User/model/slice';
 import { getProfile } from '../../../entities/User/model/thunks';
 import { API_BASE_URL } from '../../../shared/configs/api';
+import { ServerErrors } from '../../../shared/types/serverTypes';
 
 export const signin = createAsyncThunk(
   'auth/signin',
@@ -15,7 +16,10 @@ export const signin = createAsyncThunk(
         body: JSON.stringify(credentials),
       });
 
-      if (!response.ok) throw new Error('Invalid credentials');
+      if (!response.ok) {
+        const errors = await response.json();
+        throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+      }
       const data = await response.json();
 
       saveTokenToLocalStorage(data.token);
@@ -42,7 +46,10 @@ export const signup = createAsyncThunk(
         body: JSON.stringify(newUser),
       });
 
-      if (!response.ok) throw new Error('Registration failed');
+      if (!response.ok) {
+        const errors = await response.json();
+        throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+      }
       const data = await response.json();
 
       saveTokenToLocalStorage(data.token);
