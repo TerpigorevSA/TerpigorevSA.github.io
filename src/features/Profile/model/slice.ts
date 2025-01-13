@@ -3,7 +3,7 @@ import { changePassword, getProfile, updateProfile } from '../../../entities/Use
 
 interface ProfileState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | null;
+  error: string | null | string[];
 }
 
 const initialState: ProfileState = {

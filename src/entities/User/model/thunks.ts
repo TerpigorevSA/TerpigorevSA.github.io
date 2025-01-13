@@ -4,6 +4,7 @@ import { getTokenFromLocalStorage } from '../../../shared/lib/localStorage';
 import { setCurrentUser, updateCurrentUser } from './slice';
 import { API_BASE_URL } from '../../../shared/configs/api';
 import { ServerErrors } from '../../../shared/types/serverTypes';
+import { getLocaleErrorMessage } from '../../../shared/lib/errorsParsing';
 
 export const getProfile = createAsyncThunk('user/getProfile', async (_, thunkAPI) => {
   const token = getTokenFromLocalStorage();
@@ -17,7 +18,8 @@ export const getProfile = createAsyncThunk('user/getProfile', async (_, thunkAPI
 
     if (!response.ok) {
       const errors = await response.json();
-      throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+      const errorMessages = (errors as ServerErrors).errors.map((error) => getLocaleErrorMessage(error));
+      return thunkAPI.rejectWithValue(errorMessages);
     }
     const data = await response.json();
 
@@ -25,7 +27,7 @@ export const getProfile = createAsyncThunk('user/getProfile', async (_, thunkAPI
 
     return data;
   } catch (error) {
-    return thunkAPI.rejectWithValue((error as Error).message);
+    return thunkAPI.rejectWithValue(['CommonError.UnexpectedError']);
   }
 });
 
@@ -42,7 +44,8 @@ export const updateProfile = createAsyncThunk('user/updateProfile', async (user:
 
     if (!response.ok) {
       const errors = await response.json();
-      throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+      const errorMessages = (errors as ServerErrors).errors.map((error) => getLocaleErrorMessage(error));
+      return thunkAPI.rejectWithValue(errorMessages);
     }
     const data = await response.json();
 
@@ -50,7 +53,7 @@ export const updateProfile = createAsyncThunk('user/updateProfile', async (user:
 
     return data;
   } catch (error) {
-    return thunkAPI.rejectWithValue((error as Error).message);
+    return thunkAPI.rejectWithValue(['CommonError.UnexpectedError']);
   }
 });
 
@@ -69,13 +72,14 @@ export const changePassword = createAsyncThunk(
 
       if (!response.ok) {
         const errors = await response.json();
-        throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+        const errorMessages = (errors as ServerErrors).errors.map((error) => getLocaleErrorMessage(error));
+        return thunkAPI.rejectWithValue(errorMessages);
       }
       const data = await response.json();
 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue((error as Error).message);
+      return thunkAPI.rejectWithValue(['CommonError.UnexpectedError']);
     }
   }
 );
