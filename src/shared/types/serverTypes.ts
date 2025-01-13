@@ -1,4 +1,4 @@
-enum ErrorCode {
+export enum ErrorCode {
   ERR_INCORRECT_EMAIL_OR_PASSWORD = 'ERR_INCORRECT_EMAIL_OR_PASSWORD', // Если не корректный email или пароль
   ERR_ACCOUNT_ALREADY_EXIST = 'ERR_ACCOUNT_ALREADY_EXIST', // При регистрации если пользователь уже существует
   ERR_FIELD_REQUIRED = 'ERR_FIELD_REQUIRED', // Обязательное поле. В ошибке будет дополнительное поле fieldName с указанием, какое конкретно поле обязательно
@@ -27,3 +27,5 @@ export type ServerErrors = {
     message: string;
   }[];
 };
+
+export type ServerError = ServerErrors['errors'] extends (infer T)[] ? T : undefined;

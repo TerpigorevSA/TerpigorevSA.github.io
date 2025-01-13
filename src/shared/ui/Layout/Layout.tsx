@@ -6,7 +6,7 @@ import Logo from '../Logo/Logo';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import { Outlet } from 'react-router-dom';
-import { profileMenuItems, authMenuItems, shopMenuItems, adminMenuItems } from './menuItems';
+import { profileMenuItems, authMenuItems, shopMenuItems, adminMenuItems, authByQueryMenuItems } from './menuItems';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 const Layout: FC = () => {
@@ -17,7 +17,15 @@ const Layout: FC = () => {
           <Logo />
         </div>
         <div className={style.item}>
-          <NavigationBar menuItems={[...shopMenuItems, ...profileMenuItems, ...adminMenuItems, ...authMenuItems]} />
+          <NavigationBar
+            menuItems={[
+              ...shopMenuItems,
+              ...profileMenuItems,
+              ...adminMenuItems,
+              ...authMenuItems,
+              ...authByQueryMenuItems,
+            ]}
+          />
         </div>
         <div className={style.right_wrapper}>
           <div className={style.item}>

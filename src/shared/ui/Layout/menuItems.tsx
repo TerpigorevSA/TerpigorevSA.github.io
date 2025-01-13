@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavItem } from '../NavigationBar/NavigationBar';
+import AuthScreenByQuery from '../../../pages/AuthScreenByQuery/AuthScreen';
 import AuthScreen, { AuthAction } from '../../../pages/AuthScreen/AuthScreen';
 import ProfileScreen from '../../../pages/ProfileScreen/ProfileScreen';
 import CatalogScreen from '../../../pages/CatalogScreen/CatalogScreen';
@@ -42,6 +43,32 @@ export const authMenuItems: NavItem[] = [
         authenticationState: AuthenticationState.Authenticated,
         path: '/auth/SignOut',
         element: <AuthScreen authAction={AuthAction.SignOut} />,
+      },
+    ],
+  },
+];
+
+export const authByQueryMenuItems: NavItem[] = [
+  {
+    label: 'Routes.AuthByQuery.label',
+    dropdown: [
+      {
+        label: 'Routes.AuthByQuery.SignIn.label',
+        authenticationState: AuthenticationState.Unauthenticated,
+        path: '/authByQuery/SignIn',
+        element: <AuthScreenByQuery authAction={AuthAction.SignIn} />,
+      },
+      {
+        label: 'Routes.AuthByQuery.SignUp.label',
+        authenticationState: AuthenticationState.Unauthenticated,
+        path: '/authByQuery/SignUp',
+        element: <AuthScreenByQuery authAction={AuthAction.SignUp} />,
+      },
+      {
+        label: 'Routes.AuthByQuery.SignOut.label',
+        authenticationState: AuthenticationState.Authenticated,
+        path: '/authByQuery/SignOut',
+        element: <AuthScreenByQuery authAction={AuthAction.SignOut} />,
       },
     ],
   },

@@ -24,6 +24,11 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isAuthenticated = true;
     },
+    setUnauthenticated: (state) => {
+      state.status = 'idle';
+      state.token = null;
+      state.isAuthenticated = false;
+    },
   },
   extraReducers: (builder) => {
     builder

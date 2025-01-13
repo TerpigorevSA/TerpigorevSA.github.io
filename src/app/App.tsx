@@ -3,7 +3,13 @@ import cn from 'clsx';
 import style from './App.css';
 import Layout from '../shared/ui/Layout/Layout';
 import './localization';
-import { profileMenuItems, authMenuItems, shopMenuItems, adminMenuItems } from 'src/shared/ui/Layout/menuItems';
+import {
+  profileMenuItems,
+  authMenuItems,
+  shopMenuItems,
+  adminMenuItems,
+  authByQueryMenuItems,
+} from 'src/shared/ui/Layout/menuItems';
 import { Route, Routes } from 'react-router-dom';
 import { WithAuthenticationState } from '../shared/hocs/withAuthenticationState';
 import ThemeProvider from '../shared/providers/ThemeProvider/ThemeProvider';
@@ -18,7 +24,13 @@ import { removeTokenFromLocalStorage } from '../shared/lib/localStorage';
 import { setupAuthSync } from '../features/Auth/model/sync';
 
 function App() {
-  const [menuItems] = useState([...shopMenuItems, ...profileMenuItems, ...adminMenuItems, ...authMenuItems]);
+  const [menuItems] = useState([
+    ...shopMenuItems,
+    ...profileMenuItems,
+    ...adminMenuItems,
+    ...authMenuItems,
+    ...authByQueryMenuItems,
+  ]);
   const [initialized, setInitialization] = useState(false);
   const dispatch: AppDispatch = useDispatch();
 

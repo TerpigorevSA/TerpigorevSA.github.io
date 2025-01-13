@@ -126,6 +126,18 @@
         "label": "Sign Out"
       }
     },
+    "AuthByQuery": {
+      "label": "Authorization by RTK Query",
+      "SignIn": {
+        "label": "Sign In"
+      },
+      "SignUp": {
+        "label": "Sign Up"
+      },
+      "SignOut": {
+        "label": "Sign Out"
+      }
+    },
     "Catalog": {
       "label": "Catalog"
     },

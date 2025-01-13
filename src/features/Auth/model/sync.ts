@@ -10,7 +10,7 @@ export const setupAuthSync = () => {
       if (event.newValue) {
         store.dispatch(getProfile());
         const token = getTokenFromLocalStorage();
-        store.dispatch(setAuthenticated(token));
+        store.dispatch(setAuthenticated({ token }));
       } else {
         store.dispatch(signout());
       }
