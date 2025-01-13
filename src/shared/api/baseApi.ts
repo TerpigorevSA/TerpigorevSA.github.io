@@ -5,7 +5,7 @@ export const baseApi = createApi({
   reducerPath: 'api',
   tagTypes: ['Profile'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://19429ba06ff2.vps.myjino.ru/api',
+    baseUrl: 'https://19429ba06ff2.vps.myjino.ru/api',
     prepareHeaders: (headers) => {
       const token = getTokenFromLocalStorage();
       if (token) {
