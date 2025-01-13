@@ -147,5 +147,14 @@
     "Products": {
       "label": "Products"
     }
+  },
+  "ErrorCode": {
+    "ERR_ACCOUNT_ALREADY_EXIST": "An account with this email address already exists.",
+    "ERR_INCORRECT_EMAIL_OR_PASSWORD": "Incorrect email or password.",
+    "ERR_INCORRECT_PASSWORD": "Incorrect password.",
+    "ERR_INVALID_PASSWORD": "The password does not meet security requirements."
+  },
+  "CommonError": {
+    "UnexspectedError": "Unexpected error. Please try again."
   }
 }

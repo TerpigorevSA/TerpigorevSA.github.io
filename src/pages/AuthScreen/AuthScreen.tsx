@@ -49,7 +49,7 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ authAction }) => {
         {signUp}
         {signOut}
       </div>
-      {authError && <div className={styles.error}>{authError}</div>}
+      {authError && <div className={styles.error}>{(authError as string[]).map((str) => t(str)).join('\n')}</div>}
     </div>
   );
 };

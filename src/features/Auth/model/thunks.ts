@@ -5,6 +5,7 @@ import { clearCurrentUser } from '../../../entities/User/model/slice';
 import { getProfile } from '../../../entities/User/model/thunks';
 import { API_BASE_URL } from '../../../shared/configs/api';
 import { ServerErrors } from '../../../shared/types/serverTypes';
+import { getLocaleErrorMessage } from '../../../shared/lib/errorsParsing';
 
 export const signin = createAsyncThunk(
   'auth/signin',
@@ -18,7 +19,8 @@ export const signin = createAsyncThunk(
 
       if (!response.ok) {
         const errors = await response.json();
-        throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+        const errorMessages = (errors as ServerErrors).errors.map((error) => getLocaleErrorMessage(error));
+        return thunkAPI.rejectWithValue(errorMessages);
       }
       const data = await response.json();
 
@@ -26,12 +28,12 @@ export const signin = createAsyncThunk(
 
       const profile = await thunkAPI.dispatch(getProfile()); //.unwrap();// thunkAPI.dispatch(setCurrentUser(data.user));
       if (getProfile.rejected.match(profile)) {
-        throw new Error(profile.payload as string);
+        thunkAPI.rejectWithValue([profile.payload as string]);
       }
 
       return { token: data.token, profile };
     } catch (error) {
-      return thunkAPI.rejectWithValue((error as Error).message);
+      return thunkAPI.rejectWithValue(['CommonError.UnexpectedError']);
     }
   }
 );
@@ -48,7 +50,8 @@ export const signup = createAsyncThunk(
 
       if (!response.ok) {
         const errors = await response.json();
-        throw new Error((errors as ServerErrors).errors.map((error) => `${error.name}:\t${error.message}`).join('\n'));
+        const errorMessages = (errors as ServerErrors).errors.map((error) => getLocaleErrorMessage(error));
+        return thunkAPI.rejectWithValue(errorMessages);
       }
       const data = await response.json();
 
@@ -56,12 +59,12 @@ export const signup = createAsyncThunk(
 
       const profile = await thunkAPI.dispatch(getProfile()).unwrap(); // thunkAPI.dispatch(setCurrentUser(data.user));
       if (getProfile.rejected.match(profile)) {
-        throw new Error(profile.payload as string);
+        thunkAPI.rejectWithValue([profile.payload as string]);
       }
 
       return { token: data.token, profile };
     } catch (error) {
-      return thunkAPI.rejectWithValue((error as Error).message);
+      return thunkAPI.rejectWithValue(['CommonError.UnexpectedError']);
     }
   }
 );

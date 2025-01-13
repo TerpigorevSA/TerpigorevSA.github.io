@@ -147,5 +147,14 @@
     "Products": {
       "label": "Товары"
     }
+  },
+  "ErrorCode": {
+    "ERR_ACCOUNT_ALREADY_EXIST": "Аккаунт с таким адресом электронной почты уже существует.",
+    "ERR_INCORRECT_EMAIL_OR_PASSWORD": "Неверный адрес электронной почты или пароль.",
+    "ERR_INCORRECT_PASSWORD": "Неверный пароль.",
+    "ERR_INVALID_PASSWORD": "Пароль не соответствует требованиям безопасности."
+  },
+  "CommonError": {
+    "UnexspectedError": "Неожиданная ошибка. Пожалуйста, повторите попытку."
   }
 }

@@ -3,6 +3,7 @@ import { baseApi } from '../../../shared/api/baseApi';
 import { userApi } from '../../../entities/User/model/api';
 import { setAuthenticated } from './slice';
 import { ServerErrors } from '../../../shared/types/serverTypes';
+import { getLocaleErrorMessage } from '../../../shared/lib/errorsParsing';
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,9 +26,9 @@ export const authApi = baseApi.injectEndpoints({
         }
       },
       transformErrorResponse(baseQueryReturnValue, meta, arg) {
-        return (baseQueryReturnValue.data as { status: number } & ServerErrors).errors
-          .map((error) => `${error.name}:\t${error.message}`)
-          .join('\n');
+        return (baseQueryReturnValue.data as { status: number } & ServerErrors).errors.map((error) =>
+          getLocaleErrorMessage(error)
+        );
       },
     }),
     signup: builder.mutation<{ token: string }, { email: string; password: string; commandId: string }>({
@@ -49,9 +50,9 @@ export const authApi = baseApi.injectEndpoints({
         }
       },
       transformErrorResponse(baseQueryReturnValue, meta, arg) {
-        return (baseQueryReturnValue.data as { status: number } & ServerErrors).errors
-          .map((error) => `${error.name}:\t${error.message}`)
-          .join('\n');
+        return (baseQueryReturnValue.data as { status: number } & ServerErrors).errors.map((error) =>
+          getLocaleErrorMessage(error)
+        );
       },
     }),
   }),
