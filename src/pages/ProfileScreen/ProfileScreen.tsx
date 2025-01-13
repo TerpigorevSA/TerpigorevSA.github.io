@@ -39,7 +39,7 @@ const ProfileScreen: React.FC = () => {
       <div>
         <ChangePassword onSubmit={handleChangePasswordSubmit} />
       </div>
-      {profileError && <div className={styles.error}>{profileError}</div>}
+      {profileError && <div className={styles.error}>{(profileError as string[]).map((str) => t(str)).join('\n')}</div>}
     </div>
   );
 };
