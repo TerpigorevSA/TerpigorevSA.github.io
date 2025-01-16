@@ -20,9 +20,11 @@ import CartProvider from '../shared/providers/CartProvider/CartProvider';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './store/store';
 import { getCategories } from '../features/Products/model/thunks';
-import { removeTokenFromLocalStorage } from '../shared/lib/localStorage';
 import { setupAuthSync } from '../features/Auth/model/sync';
 import RootScreen from 'src/pages/RootScreen/RootScreen';
+import { getTokenFromLocalStorage } from '../shared/lib/localStorage';
+import { getProfile } from '../entities/User/model/thunks';
+import { setAuthenticated } from '../features/Auth/model/slice';
 
 function App() {
   const [menuItems] = useState([
@@ -36,9 +38,14 @@ function App() {
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
+    if (getTokenFromLocalStorage()) {
+      dispatch(getProfile());
+      const token = getTokenFromLocalStorage();
+      dispatch(setAuthenticated({ token }));
+    }
     setupAuthSync();
     dispatch(getCategories());
-    removeTokenFromLocalStorage();
+    // removeTokenFromLocalStorage();
     setInitialization(true);
   }, []);
 
