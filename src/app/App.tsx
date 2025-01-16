@@ -3,13 +3,6 @@ import cn from 'clsx';
 import style from './App.css';
 import Layout from '../shared/ui/Layout/Layout';
 import './localization';
-import {
-  profileMenuItems,
-  authMenuItems,
-  shopMenuItems,
-  adminMenuItems,
-  authByQueryMenuItems,
-} from 'src/shared/ui/Layout/menuItems';
 import { Route, Routes } from 'react-router-dom';
 import { WithAuthenticationState } from '../shared/hocs/withAuthenticationState';
 import ThemeProvider from '../shared/providers/ThemeProvider/ThemeProvider';
@@ -21,19 +14,19 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from './store/store';
 import { getCategories } from '../features/Products/model/thunks';
 import { setupAuthSync } from '../features/Auth/model/sync';
-import RootScreen from 'src/pages/RootScreen/RootScreen';
 import { getTokenFromLocalStorage } from '../shared/lib/localStorage';
 import { getProfile } from '../entities/User/model/thunks';
 import { setAuthenticated } from '../features/Auth/model/slice';
+import menuItems from './menu/menuItems';
 
 function App() {
-  const [menuItems] = useState([
-    ...shopMenuItems,
-    ...profileMenuItems,
-    ...adminMenuItems,
-    ...authMenuItems,
-    ...authByQueryMenuItems,
-  ]);
+  // const [menuItems] = useState([
+  //   ...shopMenuItems,
+  //   ...profileMenuItems,
+  //   ...adminMenuItems,
+  //   ...authMenuItems,
+  //   ...authByQueryMenuItems,
+  // ]);
   const [initialized, setInitialization] = useState(false);
   const dispatch: AppDispatch = useDispatch();
 
@@ -86,9 +79,9 @@ function App() {
           </React.Fragment>
         );
       }),
-      <React.Fragment key={'rootScreenElement'}>
-        <Route path={'/'} element={<RootScreen />} />
-      </React.Fragment>,
+      // <React.Fragment key={'rootScreenElement'}>
+      //   <Route path={'/'} element={<RootScreen />} />
+      // </React.Fragment>,
     ];
   };
 
@@ -100,7 +93,7 @@ function App() {
             <CartProvider>
               <div className={cn(style.App)}>
                 <Routes>
-                  <Route path="/" element={<Layout />}>
+                  <Route path="/" element={<Layout menuItems={menuItems} />}>
                     {generateRoutes(menuItems)}
                   </Route>
                 </Routes>

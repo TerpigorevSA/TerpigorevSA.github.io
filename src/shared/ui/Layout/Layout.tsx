@@ -6,10 +6,13 @@ import Logo from '../Logo/Logo';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import { Outlet } from 'react-router-dom';
-import { profileMenuItems, authMenuItems, shopMenuItems, adminMenuItems, authByQueryMenuItems } from './menuItems';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import NavigationBar, { NavItem } from '../NavigationBar/NavigationBar';
 
-const Layout: FC = () => {
+type LayoutProps = {
+  menuItems: NavItem[];
+};
+
+const Layout: FC<LayoutProps> = ({ menuItems }) => {
   return (
     <div className={cn(style.Layout)}>
       <Header>
@@ -17,15 +20,7 @@ const Layout: FC = () => {
           <Logo />
         </div>
         <div className={style.item}>
-          <NavigationBar
-            menuItems={[
-              ...shopMenuItems,
-              ...profileMenuItems,
-              ...adminMenuItems,
-              ...authMenuItems,
-              ...authByQueryMenuItems,
-            ]}
-          />
+          <NavigationBar menuItems={menuItems} />
         </div>
         <div className={style.right_wrapper}>
           <div className={style.item}>

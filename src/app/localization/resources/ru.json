@@ -146,6 +146,9 @@
     },
     "Products": {
       "label": "Товары"
+    },
+    "Home": {
+      "label": "Главная"
     }
   },
   "ErrorCode": {
