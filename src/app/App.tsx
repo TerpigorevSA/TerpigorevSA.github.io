@@ -20,7 +20,6 @@ import CartProvider from '../shared/providers/CartProvider/CartProvider';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './store/store';
 import { getCategories } from '../features/Products/model/thunks';
-import { removeTokenFromLocalStorage } from '../shared/lib/localStorage';
 import { setupAuthSync } from '../features/Auth/model/sync';
 import RootScreen from 'src/pages/RootScreen/RootScreen';
 
@@ -38,7 +37,7 @@ function App() {
   useEffect(() => {
     setupAuthSync();
     dispatch(getCategories());
-    removeTokenFromLocalStorage();
+    // removeTokenFromLocalStorage();
     setInitialization(true);
   }, []);
 
