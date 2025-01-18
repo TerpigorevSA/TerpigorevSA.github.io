@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { CartEntry } from './types';
+import { resetState } from '../../../shared/actions/actions';
 
 interface CartEntryState {
   currentCartEntry: CartEntry[];
@@ -34,6 +35,9 @@ const cartEntrySlice = createSlice({
     clearCart: (state) => {
       state.currentCartEntry = [];
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(resetState, () => initialState);
   },
 });
 

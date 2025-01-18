@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCategories, getPartProducts, updateProduct } from './thunks';
+import { resetState } from '../../../shared/actions/actions';
 
 interface ProductsState {
   products: Product[];
@@ -23,6 +24,7 @@ const ProductsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(resetState, () => initialState)
       .addCase(getPartProducts.pending, (state) => {
         state.status = 'loading';
         state.error = null;
