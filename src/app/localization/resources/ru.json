@@ -86,6 +86,7 @@
     "name": "Имя",
     "namePlaceholder": "Введите имя",
     "photos": "Фотографии",
+    "photo": "Фотография",
     "photoPlaceholder": "Введите URL фотографии",
     "addPhoto": "Добавить фото",
     "removePhoto": "Удалить",

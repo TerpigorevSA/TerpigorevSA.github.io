@@ -86,6 +86,7 @@
     "name": "Name",
     "namePlaceholder": "Enter name",
     "photos": "Photos",
+    "photo": "Photo",
     "photoPlaceholder": "Enter photo URL",
     "addPhoto": "Add photo",
     "removePhoto": "Remove",
