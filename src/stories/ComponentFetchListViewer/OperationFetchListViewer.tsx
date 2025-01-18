@@ -3,6 +3,7 @@ import React, { FC, useCallback, useState } from 'react';
 import OperationItem from '../../entities/Operation/ui/OperationItem/OperationItem';
 import { createRandomOperation, getRandomDate } from '../../shared/lib/fakeGenerators/fakeGenerators';
 import ComponentFetchList from '../../shared/ui/ComponentFetchList/ComponentFetchList';
+import { Operation } from '../../entities/Operation/models/types/operation';
 
 const OperationFetchListViewer: FC = () => {
   const [items, setItems] = useState(
@@ -31,7 +32,7 @@ const OperationFetchListViewer: FC = () => {
 
   return (
     <>
-      <ComponentFetchList items={items} doFetch={fetchItems} render={renderCallback} />
+      <ComponentFetchList items={items} doFetch={fetchItems} render={renderCallback} needObserve={true} />
     </>
   );
 };

@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from '../../app/store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { signin, signup, signout } from '../../features/Auth/model/thunks';
 import SignOut from './SignOut/SignOut';
+import { COMMAND_ID } from '../../shared/configs/api';
 
 export enum AuthAction {
   SignIn = 'signIn',
@@ -29,7 +30,7 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ authAction }) => {
     dispatch(signin({ email: data.email, password: data.password }));
   };
   const handleSignUpSubmit = (data: SignUpFields) => {
-    dispatch(signup({ email: data.email, password: data.password, commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89' }));
+    dispatch(signup({ email: data.email, password: data.password, commandId: COMMAND_ID }));
   };
 
   const handleSignOut = () => dispatch(signout());

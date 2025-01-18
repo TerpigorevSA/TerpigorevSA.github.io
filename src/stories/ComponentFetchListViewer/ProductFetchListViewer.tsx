@@ -3,6 +3,7 @@ import React, { FC, useCallback, useState } from 'react';
 import { createRandomProduct, getRandomDate } from '../../shared/lib/fakeGenerators/fakeGenerators';
 import ProductItem from '../../entities/Product/ui/ProductItem/ProductItem';
 import ComponentFetchList from '../../shared/ui/ComponentFetchList/ComponentFetchList';
+import { Product } from '../../shared/types/serverTypes';
 
 const ProductFetchListViewer: FC = () => {
   const [items, setItems] = useState(
@@ -23,12 +24,7 @@ const ProductFetchListViewer: FC = () => {
   const renderCallback = useCallback(
     (item: Product) => (
       <div key={item.id}>
-        <ProductItem
-          name={item.name}
-          desc={item.desc}
-          price={item.price}
-          photo={item.photos?.length > 0 ? item.photos[0] : undefined}
-        />
+        <ProductItem name={item.name} desc={item.desc} price={item.price} photo={item.photo} />
       </div>
     ),
     []
@@ -36,7 +32,7 @@ const ProductFetchListViewer: FC = () => {
 
   return (
     <>
-      <ComponentFetchList items={items} doFetch={fetchItems} render={renderCallback} />
+      <ComponentFetchList items={items} doFetch={fetchItems} render={renderCallback} needObserve={true} />
     </>
   );
 };

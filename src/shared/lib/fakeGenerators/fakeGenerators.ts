@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
+import { Category, Product } from '../../types/serverTypes';
+import { Operation } from '../../../entities/Operation/models/types/operation';
 
 export const createRandomProduct = (createdAt: string): Product => {
   const id = getRandomId();
@@ -8,10 +10,13 @@ export const createRandomProduct = (createdAt: string): Product => {
   return {
     id: id,
     name: `Продукт ${id}`,
-    photos: [`https://dummyimage.com/500x500/cccccc/000000&text=Lorem+ipsum+${id}`],
-    // photo: `https://via.placeholder.com/500.png?text=Lorem+ipsum+${id}`,
+    // photos: [`https://dummyimage.com/500x500/cccccc/000000&text=Lorem+ipsum+${id}`],
+    photo: `https://via.placeholder.com/500.png?text=Lorem+ipsum+${id}`,
     // photo: `store/photos/products/${id}.jpeg`,
-    createdAt: createdAt,
+    // createdAt: createdAt,
+    createdAt: null,
+    updatedAt: null,
+    commandId: null,
     category: category,
     price: price,
     oldPrice: Math.random() < 0.5 ? price + Math.trunc(100 * price * getRandom(-0.2, 0.2, 2)) / 100 : undefined,
@@ -62,24 +67,39 @@ export const categories: Category[] = [
   {
     id: '1',
     name: 'Прям вот очень нужное',
+    commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: '2',
     name: 'Не так, что бы нужное',
     photo: 'store/photos/categories/2.jpeg',
+    commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: '3',
     name: 'Совсем выбрось',
     photo: 'store/photos/categories/3.jpeg',
+    commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: '4',
     name: 'Необходимое',
+    commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: '5',
     name: 'Вроде некуда, а жаль',
+    commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ];
 

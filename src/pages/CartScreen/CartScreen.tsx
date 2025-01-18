@@ -5,6 +5,7 @@ import CartItem from '../../features/Cart/ui/CartItem/CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store/store';
 import { setQuantity } from '../../entities/Cart/model/slice';
+import { Product } from '../../shared/types/serverTypes';
 
 const CatalogScreen: React.FC = () => {
   const items = useSelector((state: RootState) => state.cart.currentCartEntry);
@@ -37,7 +38,7 @@ const CatalogScreen: React.FC = () => {
         <CartItem
           name={item.product.name}
           price={item.product.price}
-          photo={item.product.photos?.length > 0 ? item.product.photos[0] : undefined}
+          photo={item.product.photo}
           count={item.quantity}
           onIncrement={() => handleIncrement(item.product, item.quantity)}
           onDecrement={() => handleDecrement(item.product, item.quantity)}
