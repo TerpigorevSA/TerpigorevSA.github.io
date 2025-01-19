@@ -4,6 +4,7 @@ import profileReducer from '../../features/Profile/model/slice';
 import userReducer from '../../entities/User/model/slice';
 import productsReducer from '../../features/Products/model/slice';
 import cartReducer from '../../entities/Cart/model/slice';
+
 import { apiMiddleware, apiReducer } from '../api/api';
 
 export const store = configureStore({

@@ -145,8 +145,11 @@
     "Cart": {
       "label": "Корзина"
     },
-    "Products": {
-      "label": "Товары"
+    "Edit": {
+      "label": "Редактирование",
+      "Products": {
+        "label": "Товары"
+      }
     },
     "Home": {
       "label": "Главная"

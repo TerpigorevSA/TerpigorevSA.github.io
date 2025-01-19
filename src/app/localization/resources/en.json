@@ -145,8 +145,11 @@
     "Cart": {
       "label": "Cart"
     },
-    "Products": {
-      "label": "Products"
+    "Edit": {
+      "label": "Edit",
+      "Products": {
+        "label": "Products"
+      }
     },
     "Home": {
       "label": "Home"

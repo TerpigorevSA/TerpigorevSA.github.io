@@ -16,12 +16,18 @@ const shopMenuItems: NavItem[] = [
   { label: 'Routes.Cart.label', path: '/cart', element: <CartScreen /> },
 ];
 
-const adminMenuItems: NavItem[] = [
+const editMenuItems: NavItem[] = [
   {
-    label: 'Routes.Products.label',
+    label: 'Routes.Edit.label',
     authenticationState: AuthenticationState.AdminAuthenticated,
-    path: '/products',
-    element: <ProductsEditScreen />,
+    dropdown: [
+      {
+        label: 'Routes.Edit.Products.label',
+        authenticationState: AuthenticationState.AdminAuthenticated,
+        path: '/products',
+        element: <ProductsEditScreen />,
+      },
+    ],
   },
 ];
 
@@ -94,7 +100,7 @@ export default [
   ...homeMenuItems,
   ...shopMenuItems,
   ...profileMenuItems,
-  ...adminMenuItems,
+  ...editMenuItems,
   ...authMenuItems,
   ...authByQueryMenuItems,
   ...testMenuItems,
