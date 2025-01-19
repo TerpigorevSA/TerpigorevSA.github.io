@@ -185,5 +185,14 @@
   },
   "CommonError": {
     "UnexspectedError": "Неожиданная ошибка. Пожалуйста, повторите попытку."
+  },
+  "CartScreen": {
+    "cart": "Корзина",
+    "loading": "Загрузка...",
+    "emptyCart": "Корзина пуста",
+    "totalTitle": "Итого",
+    "total": "{{total, currency}}",
+    "clear": "Очистить",
+    "checkoutButton": "Оформить заказ"
   }
 }

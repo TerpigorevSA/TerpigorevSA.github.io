@@ -182,3 +182,12 @@ export type MutateProductBody = Omit<Product, 'id' | 'createdAt' | 'updatedAt' |
 };
 
 export type MutateCategoryBody = Omit<Category, 'id' | 'createdAt' | 'updatedAt' | 'commandId'>;
+
+export type MutateOrderProduct = {
+  id: string;
+  quantity: number;
+};
+
+export type MutateOrderBody = Omit<Order, 'id' | 'createdAt' | 'products' | 'user' | 'updatedAt' | 'commandId'> & {
+  products: MutateOrderProduct[];
+};

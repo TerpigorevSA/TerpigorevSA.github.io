@@ -185,5 +185,14 @@
   },
   "CommonError": {
     "UnexspectedError": "Unexpected error. Please try again."
+  },
+  "CartScreen": {
+    "cart": "Cart",
+    "loading": "Loading...",
+    "emptyCart": "Cart is empty",
+    "totalTitle": "Total",
+    "total": "{{total, currency}}",
+    "clear": "Clear",
+    "checkoutButton": "Checkout"
   }
 }

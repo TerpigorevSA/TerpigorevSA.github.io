@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../app/store/store';
 import { Product } from '../../shared/types/serverTypes';
 import { getPartProducts } from '../../features/Products/model/thunks';
-import { setQuantity } from '../../entities/Cart/model/slice';
+import { setQuantity } from '../../features/Cart/model/slice';
 
 const CatalogScreen: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();

@@ -3,8 +3,9 @@ import authReducer from '../../features/Auth/model/slice';
 import profileReducer from '../../features/Profile/model/slice';
 import userReducer from '../../entities/User/model/slice';
 import productsReducer from '../../features/Products/model/slice';
-import cartReducer from '../../entities/Cart/model/slice';
+import cartReducer from '../../features/Cart/model/slice';
 import categoriesReducer from '../../features/Categories/model/slice';
+import ordersReducer from '../../features/Orders/model/slice';
 
 import { apiMiddleware, apiReducer } from '../api/api';
 
@@ -17,6 +18,7 @@ export const store = configureStore({
     products: productsReducer,
     cart: cartReducer,
     categories: categoriesReducer,
+    orders: ordersReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiMiddleware),
   devTools: process.env.NODE_ENV !== 'production',

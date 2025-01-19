@@ -111,7 +111,8 @@ const ProductsEditScreen: React.FC = () => {
             items={items}
             doFetch={handleFetchProducts}
             render={renderCallback}
-            needObserve={pagination.pageNumber < pagination.total}
+            needObserve={pagination.pageNumber < pageTotal}
+            // needObserve={pagination.pageNumber < pagination.total}
           />
         </div>
       </div>
