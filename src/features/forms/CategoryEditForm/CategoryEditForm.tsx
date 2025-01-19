@@ -81,10 +81,11 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({ onSubmit, defaultVa
 
       <div>
         <label className={cn(styles.label)}>{t('CategoryEdit.photo')}</label>
-        <div style={{ display: 'flex', width: '100%', alignItems: 'center' }}>
+        <div style={{ display: 'flex', width: '100%', alignItems: 'center', gap: '10px' }}>
           <input
             className={cn(styles.input, { [styles.error]: errors.photo })}
-            style={{ paddingTop: '20px' }}
+            // style={{ paddingTop: '20px' }}
+            // style={{ paddingBottom: '20px' }}
             type="text"
             {...register('photo.url', {
               validate: (value) =>
@@ -98,7 +99,7 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({ onSubmit, defaultVa
           />
 
           <input type="file" id="file-upload" onChange={handleFileUpload} style={{ display: 'none' }} />
-          <label htmlFor="file-upload" className={styles.customFileButton}>
+          <label htmlFor="file-upload" className={styles.customFileButton} style={{ whiteSpace: 'nowrap' }}>
             Выберите файл
           </label>
         </div>
