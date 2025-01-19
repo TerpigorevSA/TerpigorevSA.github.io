@@ -1,5 +1,7 @@
 {
-  "categoty": {},
+  "categoty": {
+    "photo_alt": "Категория {{name}}"
+  },
   "operation": {
     "amount": "{{amount, currency}}",
     "description_undefined": "неописуемо"
@@ -104,7 +106,24 @@
       "photosInvalid": "Каждая ссылка должна быть корректным URL",
       "priceRequired": "Цена обязательна",
       "priceMin": "Цена должна быть не меньше 0",
-      "categoryRequired": "Категория обязательна"
+      "categoryRequired": "Категория обязательна",
+      "uploadError": "'Не удалось загрузить файл. Попробуйте еще раз.'"
+    },
+    "button": "Сохранить"
+  },
+  "CategoryEdit": {
+    "name": "Имя",
+    "namePlaceholder": "Введите имя",
+    "photos": "Фотографии",
+    "photo": "Фотография",
+    "photoPlaceholder": "Введите URL фотографии",
+    "addPhoto": "Добавить фото",
+    "errors": {
+      "nameRequired": "Имя обязательно",
+      "photosRequired": "Укажите фотографию",
+      "photosInvalid": "Каждая ссылка должна быть корректным URL",
+      "priceRequired": "Цена обязательна",
+      "uploadError": "'Не удалось загрузить файл. Попробуйте еще раз.'"
     },
     "button": "Сохранить"
   },
@@ -149,6 +168,9 @@
       "label": "Редактирование",
       "Products": {
         "label": "Товары"
+      },
+      "Categories": {
+        "label": "Категории"
       }
     },
     "Home": {

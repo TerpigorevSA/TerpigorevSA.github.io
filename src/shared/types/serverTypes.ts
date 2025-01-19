@@ -180,3 +180,5 @@ export type MutateRequest<T> = {
 export type MutateProductBody = Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'commandId' | 'category'> & {
   categoryId: string;
 };
+
+export type MutateCategoryBody = Omit<Category, 'id' | 'createdAt' | 'updatedAt' | 'commandId'>;

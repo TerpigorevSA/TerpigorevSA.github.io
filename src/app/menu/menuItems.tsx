@@ -8,6 +8,7 @@ import { AuthenticationState } from '../../shared/hocs/withAuthenticationState';
 import ProductsEditScreen from '../../pages/ProductsScreen/ProductsEditScreen';
 import CartScreen from '../../pages/CartScreen/CartScreen';
 import RootScreen from '../../pages/RootScreen/RootScreen';
+import CategoriesEditScreen from '../../pages/CategoriesScreen/CategoriesEditScreen';
 
 const homeMenuItems: NavItem[] = [{ label: 'Routes.Home.label', path: '/', element: <RootScreen /> }];
 
@@ -26,6 +27,12 @@ const editMenuItems: NavItem[] = [
         authenticationState: AuthenticationState.AdminAuthenticated,
         path: '/products',
         element: <ProductsEditScreen />,
+      },
+      {
+        label: 'Routes.Edit.Categories.label',
+        authenticationState: AuthenticationState.AdminAuthenticated,
+        path: '/categories',
+        element: <CategoriesEditScreen />,
       },
     ],
   },
