@@ -8,8 +8,9 @@
 }
 
 .content {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   overflow: auto;
+  max-height: fit-content;
 }
 
 .header {

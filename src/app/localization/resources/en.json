@@ -184,7 +184,7 @@
     "ERR_INVALID_PASSWORD": "The password does not meet security requirements."
   },
   "CommonError": {
-    "UnexspectedError": "Unexpected error. Please try again."
+    "UnexpectedError": "Unexpected error. Please try again."
   },
   "CartScreen": {
     "cart": "Cart",
