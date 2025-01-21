@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import cn from 'clsx';
-import Header from '../Header/Header';
+import Header from '../../shared/ui/Header/Header';
 import style from './Layout.module.css';
-import Logo from '../Logo/Logo';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
-import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
+import Logo from '../../shared/ui/Logo/Logo';
+import ThemeSwitcher from '../../shared/ui/ThemeSwitcher/ThemeSwitcher';
+import LanguageSwitcher from '../../shared/ui/LanguageSwitcher/LanguageSwitcher';
 import { Outlet } from 'react-router-dom';
-import NavigationBar, { NavItem } from '../NavigationBar/NavigationBar';
+import NavigationBar, { NavItem } from '../../shared/ui/NavigationBar/NavigationBar';
+import CartIndicator from '../../features/Cart/ui/CartIndicator/CartIndicator';
 
 type LayoutProps = {
   menuItems: NavItem[];
@@ -23,6 +24,9 @@ const Layout: FC<LayoutProps> = ({ menuItems }) => {
           <NavigationBar menuItems={menuItems} />
         </div>
         <div className={style.right_wrapper}>
+          <div className={style.item}>
+            <CartIndicator />
+          </div>
           <div className={style.item}>
             <ThemeSwitcher />
           </div>
