@@ -2,27 +2,22 @@ import React, { FC } from 'react';
 import CartButton from '../../../../features/Cart/ui/CartButton/CartButton';
 import style from './ProductDetail.module.css';
 import { useTranslation } from 'react-i18next';
+import { Category, Product } from '../../../../shared/types/serverTypes';
 
-// type ProductDetailProps = Pick<
-//   Product& MutatePropertyToArray<Product> & AddPropertyPrefix<Category, 'category'>,
-//   'categoryName' | 'desc' | 'name' | 'photos' | 'price'
-// >;
-type ProductDetailProps = Pick<Product, 'desc' | 'name' | 'price' | 'photos'> & {
+type ProductDetailProps = Pick<Product, 'desc' | 'name' | 'price' | 'photo'> & {
   categoryName: Category['name'];
 };
 
-const ProductDetail: FC<ProductDetailProps> = ({ name, photos, desc, price, categoryName }) => {
+const ProductDetail: FC<ProductDetailProps> = ({ name, photo, desc, price, categoryName }) => {
   const { t } = useTranslation();
   return (
     <>
       <div className={style.wrapper}>
         <div className={style.imageWrapper}>
-          {photos.length === 0 ? (
-            <img className={style.image} src="undefined.png" alt={t('product.photo_alt', { name })} />
+          {photo ? (
+            <img className={style.image} src={photo} alt={t('product.photo_alt', { name })} />
           ) : (
-            photos.map((photo, index) => (
-              <img className={style.image} src={photo} alt={t('product.photo_alt', { name })} key={index} />
-            ))
+            <img className={style.image} src="undefined.png" alt={t('product.photo_alt', { name })} />
           )}
         </div>
         <div className={style.infoWrapper}>

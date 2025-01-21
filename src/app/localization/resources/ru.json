@@ -1,5 +1,7 @@
 {
-  "categoty": {},
+  "categoty": {
+    "photo_alt": "Категория {{name}}"
+  },
   "operation": {
     "amount": "{{amount, currency}}",
     "description_undefined": "неописуемо"
@@ -86,6 +88,7 @@
     "name": "Имя",
     "namePlaceholder": "Введите имя",
     "photos": "Фотографии",
+    "photo": "Фотография",
     "photoPlaceholder": "Введите URL фотографии",
     "addPhoto": "Добавить фото",
     "removePhoto": "Удалить",
@@ -103,7 +106,24 @@
       "photosInvalid": "Каждая ссылка должна быть корректным URL",
       "priceRequired": "Цена обязательна",
       "priceMin": "Цена должна быть не меньше 0",
-      "categoryRequired": "Категория обязательна"
+      "categoryRequired": "Категория обязательна",
+      "uploadError": "'Не удалось загрузить файл. Попробуйте еще раз.'"
+    },
+    "button": "Сохранить"
+  },
+  "CategoryEdit": {
+    "name": "Имя",
+    "namePlaceholder": "Введите имя",
+    "photos": "Фотографии",
+    "photo": "Фотография",
+    "photoPlaceholder": "Введите URL фотографии",
+    "addPhoto": "Добавить фото",
+    "errors": {
+      "nameRequired": "Имя обязательно",
+      "photosRequired": "Укажите фотографию",
+      "photosInvalid": "Каждая ссылка должна быть корректным URL",
+      "priceRequired": "Цена обязательна",
+      "uploadError": "'Не удалось загрузить файл. Попробуйте еще раз.'"
     },
     "button": "Сохранить"
   },
@@ -144,8 +164,23 @@
     "Cart": {
       "label": "Корзина"
     },
-    "Products": {
-      "label": "Товары"
+    "Edit": {
+      "label": "Редактирование",
+      "Products": {
+        "label": "Товары"
+      },
+      "Categories": {
+        "label": "Категории"
+      },
+      "Orders": {
+        "label": "Заказы"
+      }
+    },
+    "Home": {
+      "label": "Главная"
+    },
+    "UserOrders": {
+      "label": "Заказы"
     }
   },
   "ErrorCode": {
@@ -155,6 +190,34 @@
     "ERR_INVALID_PASSWORD": "Пароль не соответствует требованиям безопасности."
   },
   "CommonError": {
-    "UnexspectedError": "Неожиданная ошибка. Пожалуйста, повторите попытку."
-  }
-}
+    "UnexpectedError": "Неожиданная ошибка. Пожалуйста, повторите попытку."
+  },
+  "CartScreen": {
+    "cart": "Корзина",
+    "loading": "Загрузка...",
+    "emptyCart": "Корзина пуста",
+    "totalTitle": "Итого",
+    "total": "{{total, currency}}",
+    "clear": "Очистить",
+    "checkoutButton": "Оформить заказ"
+  },
+  "OrderItem": {
+    "createdAt": "Создан: {{createdAt, date}}",
+    "updatedAt": "Обновлен: {{updatedAt, date}}",
+    "status": "Статус: {{status}}",
+    "totalPrice": "Общая стоимость: {{totalPrice, currency}}"
+  },
+  "OrderProductItem": {
+    "price": "Цена: {{price, currency}}",
+    "quantity": "Количество: {{quantity}}"
+  },
+  "OrderStatus": {
+    "pending_confirmation": "ожидание подтверждения",
+    "processing": "обработка",
+    "packaging": "упаковка",
+    "waiting_for_delivery": "ожидание вручения",
+    "in_transit": "в пути",
+    "delivered": "доставлено",
+    "return_requested": "требуется возврат",
+    "order_cancelled": "заказ отменен"
+  }}

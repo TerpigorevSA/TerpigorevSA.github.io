@@ -10,6 +10,7 @@ import { signout } from '../../features/Auth/model/thunks';
 import SignOut from './SignOut/SignOut';
 import { useSigninMutation, useSignupMutation } from '../../features/Auth/model/api';
 import { useGetProfileQuery } from '../../entities/User/model/api';
+import { COMMAND_ID } from '../../shared/configs/api';
 
 export enum AuthAction {
   SignIn = 'signIn',
@@ -33,11 +34,9 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ authAction }) => {
 
   const handleSignInSubmit = async (data: SignInFields) => {
     await Signin({ email: data.email, password: data.password });
-    // dispatch(signin({ email: data.email, password: data.password }));
   };
   const handleSignUpSubmit = async (data: SignUpFields) => {
-    await Signup({ email: data.email, password: data.password, commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89' });
-    // dispatch(signup({ email: data.email, password: data.password, commandId: '6d4672bc-6245-4b6b-a4c4-acdb6cf3fc89' }));
+    await Signup({ email: data.email, password: data.password, commandId: COMMAND_ID });
   };
 
   const handleSignOut = () => dispatch(signout());

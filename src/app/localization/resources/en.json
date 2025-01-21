@@ -1,5 +1,7 @@
 {
-  "category": {},
+  "category": {
+    "photo_alt": "Категория {{name}}"
+  },
   "operation": {
     "amount": "{{amount, currency}}",
     "description_undefined": "undefined"
@@ -86,6 +88,7 @@
     "name": "Name",
     "namePlaceholder": "Enter name",
     "photos": "Photos",
+    "photo": "Photo",
     "photoPlaceholder": "Enter photo URL",
     "addPhoto": "Add photo",
     "removePhoto": "Remove",
@@ -103,7 +106,24 @@
       "photosInvalid": "Each URL must be valid",
       "priceRequired": "Price is required",
       "priceMin": "Price must be at least 0",
-      "categoryRequired": "Category is required"
+      "categoryRequired": "Category is required",
+      "uploadError": "Failed to upload file. Try again."
+    },
+    "button": "Save"
+  },
+  "CategoryEdit": {
+    "name": "Name",
+    "namePlaceholder": "Enter name",
+    "photos": "Photos",
+    "photo": "Photo",
+    "photoPlaceholder": "Enter photo URL",
+    "addPhoto": "Add photo",
+    "errors": {
+      "nameRequired": "Name is required",
+      "photosRequired": "Photo is required",
+      "photosInvalid": "Each URL must be valid",
+      "priceRequired": "Price is required",
+      "uploadError": "Failed to upload file. Try again."
     },
     "button": "Save"
   },
@@ -144,8 +164,23 @@
     "Cart": {
       "label": "Cart"
     },
-    "Products": {
-      "label": "Products"
+    "Edit": {
+      "label": "Edit",
+      "Products": {
+        "label": "Products"
+      },
+      "Categories": {
+        "label": "Categories"
+      },
+      "Orders": {
+        "label": "Orders"
+      }
+    },
+    "Home": {
+      "label": "Home"
+    },
+    "UserOrders": {
+      "label": "Orders"
     }
   },
   "ErrorCode": {
@@ -155,6 +190,35 @@
     "ERR_INVALID_PASSWORD": "The password does not meet security requirements."
   },
   "CommonError": {
-    "UnexspectedError": "Unexpected error. Please try again."
+    "UnexpectedError": "Unexpected error. Please try again."
+  },
+  "CartScreen": {
+    "cart": "Cart",
+    "loading": "Loading...",
+    "emptyCart": "Cart is empty",
+    "totalTitle": "Total",
+    "total": "{{total, currency}}",
+    "clear": "Clear",
+    "checkoutButton": "Checkout"
+  },
+  "OrderItem": {
+    "createdAt": "Created at: {{createdAt, date}}",
+    "updatedAt": "Updated at: {{updatedAt, date}}",
+    "status": "Status: {{status}}",
+    "totalPrice": "Total Price: {{totalPrice, currency}}"
+  },
+  "OrderProductItem": {
+    "price": "Price: {{price, currency}}",
+    "quantity": "Quantity: {{quantity}}"
+  },
+  "OrderStatus": {
+    "pending_confirmation": " pending confirmation",
+    "processing": " processing",
+    "packaging": " packaging",
+    "waiting_for_delivery": " waiting for delivery",
+    "in_transit": " in transit",
+    "delivered": " delivered",
+    "return_requested": " return requested",
+    "order_cancelled": " order cancelled"
   }
 }
