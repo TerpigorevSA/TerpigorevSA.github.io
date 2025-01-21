@@ -38,27 +38,4 @@ const Layout: FC<LayoutProps> = ({ menuItems }) => {
   );
 };
 
-// const Layout: FC = () => {
-//   return (
-//     <div className={cn(style.Layout)}>
-//       <Header>
-//         <div className={style.item}>
-//           <Logo />
-//         </div>
-//         <div>
-//           <NavigationBar menuItems={menuItems} />
-//         </div>
-//         <div className={style.right_wrapper}>
-//           <div className={style.item}>
-//             <ThemeSwitcher />
-//           </div>
-//           <div className={style.item}>
-//             <LanguageSwitcher />
-//           </div>
-//         </div>
-//       </Header>
-//       <Outlet />
-//     </div>
-//   );
-// };
 export default Layout;
