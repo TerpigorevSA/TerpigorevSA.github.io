@@ -30,10 +30,10 @@ const editMenuItems: NavItem[] = [
     authenticationState: AuthenticationState.AdminAuthenticated,
     dropdown: [
       {
-        label: 'Routes.Edit.Products.label',
+        label: 'Routes.Edit.Orders.label',
         authenticationState: AuthenticationState.AdminAuthenticated,
-        path: '/products',
-        element: <ProductsEditScreen />,
+        path: '/orders',
+        element: <OrdersEditScreen />,
       },
       {
         label: 'Routes.Edit.Categories.label',
@@ -42,10 +42,10 @@ const editMenuItems: NavItem[] = [
         element: <CategoriesEditScreen />,
       },
       {
-        label: 'Routes.Edit.Orders.label',
+        label: 'Routes.Edit.Products.label',
         authenticationState: AuthenticationState.AdminAuthenticated,
-        path: '/orders',
-        element: <OrdersEditScreen />,
+        path: '/products',
+        element: <ProductsEditScreen />,
       },
     ],
   },
