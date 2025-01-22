@@ -748,7 +748,8 @@ input[type="number"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid;
+  border: none;
+  outline: none;
 }
 
 .ProductEditForm-module_button-sb9U4 {
