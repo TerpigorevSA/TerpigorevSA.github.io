@@ -628,7 +628,7 @@ input[type="number"] {
     display: flex;
     align-items: center;
     gap: 10px;
-    position: relative;
+    /* position: relative; */
 }
 
 .withEditMode-module_editButton-KN0Ax {
@@ -644,6 +644,7 @@ input[type="number"] {
     background-color: var(--active-color);
     /* transform: scale(0.95); */
 }
+
 .Modal-module_modal_overlay-ZS_YJ {
   z-index: 9999;
   width: 100%;
